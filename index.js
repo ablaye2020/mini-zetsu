@@ -6,27 +6,16 @@ console.log('⚔️ MINI ZETSU - Démarrage... ⚔️');
 
 const sock = makeWASocket({
     printQRInTerminal: true,
-    auth: { state: { creds: {}, keys: {} } },
-    browser: ['Ubuntu', 'Chrome', '20.0.04']
+    auth: { state: { creds: {}, keys: {} } }
 });
 
-sock.ev.on('connection.update', async (update) => {
-    const { connection, lastDisconnect, qr } = update;
-    
-    if (qr) {
+sock.ev.on('connection.update', (update) => {
+    if (update.qr) {
         console.log('📱 Scanne ce QR code :');
-        qrcode.generate(qr, { small: true });
+        qrcode.generate(update.qr, { small: true });
     }
-    
-    if (connection === 'open') {
+    if (update.connection === 'open') {
         console.log('✅ MINI ZETSU connecté !');
-    }
-    
-    if (connection === 'close') {
-        console.log('❌ Déconnecté, reconnexion...');
-        setTimeout(() => {
-            process.exit(1);
-        }, 3000);
     }
 });
 EOF
