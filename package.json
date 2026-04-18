@@ -1,6 +1,6 @@
 cat > package.json << 'EOF'
 {
-  "name": "mini-zetsu",
+  "name": "minibot",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
