@@ -1,8 +1,7 @@
 cat > package.json << 'EOF'
 {
-  "name": "minibot",
+  "name": "mini-zetsu",
   "version": "1.0.0",
-  "type": "module",
   "dependencies": {
     "@whiskeysockets/baileys": "6.7.9",
     "qrcode-terminal": "^0.12.0"
